@@ -1,0 +1,142 @@
+/* Global settings */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #c948b1;
+}
+
+html {
+  overflow: hidden;
+}
+
+/* Nav styling  */
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e8e9e9;
+  height: 8vh;
+  position: relative;
+}
+
+.logo img {
+  width: 12em;
+  height: 8vh;
+  margin: 10px;
+}
+
+ul {
+  display: flex;
+  width: 45%;
+  justify-content: space-around;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  font-size: 1.7em;
+  font-weight: bold;
+  color: var(--blue);
+  text-decoration: none;
+  position: relative;
+  padding: 0.3rem;
+}
+
+a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0%;
+  left: 0;
+  height: 0.2em;
+  border-radius: 20px;
+  background-color: var(--blue);
+  transition: 0.3s ease-in-out;
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+/* Right mobile button */
+
+.line {
+  border: none;
+  outline: none;
+  margin: 15px;
+  background-color: transparent;
+  cursor: pointer;
+  display: none;
+}
+
+.mobile {
+  margin: -2px;
+  width: 3rem;
+  height: 5px;
+  border-radius: 10px;
+  transition: 0.3s ease ease-out;
+  background-color: var(--blue);
+}
+
+/* Media query */
+
+@media only screen and (max-width: 1000px) {
+  .line {
+    display: block;
+  }
+
+  ul {
+    position: absolute;
+    right: 0;
+    top: 8vh;
+    background-color: var(--blue);
+    height: 92vh;
+    flex-direction: column;
+    text-align: center;
+    transform: translate(100%);
+    transition: 0.4s ease-in-out;
+  }
+
+  .line.active .mobile:first-child {
+    transition: 0.6s ease-in-out;
+    transform: translateY(-300px);
+  }
+
+  .line.active .mobile:nth-child(3) {
+    transition: 0.6s ease-in-out;
+    transform: rotate(-450deg);
+  }
+
+  .line.active .mobile:last-child {
+    transition: 0.6s ease-in-out;
+    transform: rotate(450deg) translateY(8px) translateX(-16px);
+  }
+
+  ul.active {
+    transform: translate(0%);
+  }
+
+  a {
+    color: whitesmoke;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+  }
+
+  a::after {
+    background-color: whitesmoke;
+  }
+}
+
+@media only screen and (max-width: 760px) {
+  ul {
+    min-width: 100%;
+  }
+}
