@@ -1,2 +1,2 @@
 # ResponsiveWeb-mobileIdea
-Here is my little projekt and idea of responsive mobile and desktop nav.
+Here is my little project and idea of responsive mobile and desktop nav.
