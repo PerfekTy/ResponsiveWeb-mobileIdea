@@ -7,11 +7,12 @@
 }
 
 :root {
-  --blue: #c948b1;
+  --blue: #b83575;
 }
 
-html {
+body {
   overflow: hidden;
+  background-color: rgb(0, 0, 0);
 }
 
 /* Nav styling  */
@@ -20,15 +21,16 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #e8e9e9;
-  height: 8vh;
+  background-color: #e8e9e90a;
+  height: 6rem;
   position: relative;
 }
 
-.logo img {
-  width: 12em;
-  height: 8vh;
-  margin: 10px;
+.logo {
+  background: no-repeat url(./logo.png);
+  background-size: contain;
+  height: 6rem;
+  min-width: 15rem;
 }
 
 ul {
@@ -68,15 +70,6 @@ a:hover::after {
 
 /* Right mobile button */
 
-.line {
-  border: none;
-  outline: none;
-  margin: 15px;
-  background-color: transparent;
-  cursor: pointer;
-  display: none;
-}
-
 .mobile {
   margin: -2px;
   width: 3rem;
@@ -86,13 +79,13 @@ a:hover::after {
   background-color: var(--blue);
 }
 
+button {
+  display: none;
+}
+
 /* Media query */
 
 @media only screen and (max-width: 1000px) {
-  .line {
-    display: block;
-  }
-
   ul {
     position: absolute;
     right: 0;
@@ -102,22 +95,7 @@ a:hover::after {
     flex-direction: column;
     text-align: center;
     transform: translate(100%);
-    transition: 0.4s ease-in-out;
-  }
-
-  .line.active .mobile:first-child {
-    transition: 0.6s ease-in-out;
-    transform: translateY(-300px);
-  }
-
-  .line.active .mobile:nth-child(3) {
-    transition: 0.6s ease-in-out;
-    transform: rotate(-450deg);
-  }
-
-  .line.active .mobile:last-child {
-    transition: 0.6s ease-in-out;
-    transform: rotate(450deg) translateY(8px) translateX(-16px);
+    transition: 0.4s ease-in;
   }
 
   ul.active {
@@ -132,6 +110,40 @@ a:hover::after {
 
   a::after {
     background-color: whitesmoke;
+  }
+
+  button {
+    display: block;
+    background: transparent;
+    border-radius: 1rem;
+    border: none;
+    margin: 15px;
+    cursor: pointer;
+  }
+
+  .btn .line {
+    transition: y 300ms ease-in 300ms, rotate 300ms ease-in, opacity 0ms 300ms;
+    transform-origin: center;
+  }
+
+  .btn[aria-expanded="true"] .line {
+    transition: y 300ms ease-in, rotate 300ms ease-in 300ms, opacity 0ms 300ms;
+  }
+
+  .btn[aria-expanded="true"] :is(.top, .bot) {
+    y: 45;
+  }
+
+  .btn[aria-expanded="true"] .top {
+    rotate: 45deg;
+  }
+
+  .btn[aria-expanded="true"] .mid {
+    opacity: 0;
+  }
+
+  .btn[aria-expanded="true"] .bot {
+    rotate: -45deg;
   }
 }
 
